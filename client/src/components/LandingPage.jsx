@@ -116,13 +116,13 @@ function LandingPage() {
         <div className={styles.socialMedia}>
           <h2>Follow Us</h2>
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src="/public/logos/facebook.png" alt="Facebook" />
+            <img src="/logos/facebook.png" alt="Facebook" />
           </a>
           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-            <img src="/public/logos/twitter.png" alt="Twitter" />
+            <img src="/logos/twitter.png" alt="Twitter" />
           </a>
           <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img src="/public/logos/linkedin.png" alt="LinkedIn" />
+            <img src="/logos/linkedin.png" alt="LinkedIn" />
           </a>
         </div>
       </section>
