@@ -125,7 +125,7 @@ const EditorPage = () => {
               setLang(e.target.value);
               window.location.reload();
             }}
-            className="seLang"
+            className="seLang text-black"
           >
             <option value="clike">C / C++ / C# / Java</option>
             <option value="css">CSS</option>
@@ -159,7 +159,7 @@ const EditorPage = () => {
               setThem(e.target.value);
               window.location.reload();
             }}
-            className="seLang"
+            className="seLang text-black"
           >
             <option value="default">default</option>
             <option value="3024-day">3024-day</option>

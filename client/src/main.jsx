@@ -5,7 +5,7 @@ import App from './App.jsx'
 import LandingPage from './components/LandingPage.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-   <LandingPage />
-  </StrictMode>,
+  // <StrictMode>
+    <App />
+  // </StrictMode>,
 )

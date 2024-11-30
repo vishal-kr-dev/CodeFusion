@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const [roomId, setRoomId] = useState("");
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+
+  const {username} = useParams()
+  // console.log(username)
 
   const createNewRoom = (e) => {
     e.preventDefault();
@@ -52,14 +55,14 @@ const Home = () => {
             value={roomId}
             onKeyUp={handleInputEnter}
           />
-          <input
+          {/* <input
             type="text"
             className="inputBox"
             placeholder="USERNAME"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
             onKeyUp={handleInputEnter}
-          />
+          /> */}
           <button className="btn joinBtn" onClick={joinRoom}>
             Join
           </button>
