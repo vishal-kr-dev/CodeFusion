@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './LandingPage.module.css';
 
-// Example path (adjust as needed)
+ // Example path (adjust as needed)
 
 function LandingPage() {
   return (
@@ -93,6 +93,37 @@ function LandingPage() {
             </div>
             <button type="submit">Send Message</button>
           </form>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <section className={`${styles.footer} ${styles.container}`}>
+        
+        <div className={styles.footerContent}>
+          <div>
+            <h2>About Us</h2>
+            <p>Learn more about CodeFusion and how we are revolutionizing collaborative coding.</p>
+          </div>
+          <div>
+            <h2>Privacy Policy</h2>
+            <p>Read about how we handle your data and privacy.</p>
+          </div>
+          <div>
+            <h2>Terms of Service</h2>
+            <p>Understand the terms and conditions of using our platform.</p>
+          </div>
+        </div>
+        <div className={styles.socialMedia}>
+          <h2>Follow Us</h2>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="/public/logos/facebook.png" alt="Facebook" />
+          </a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <img src="/public/logos/twitter.png" alt="Twitter" />
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <img src="/public/logos/linkedin.png" alt="LinkedIn" />
+          </a>
         </div>
       </section>
     </div>

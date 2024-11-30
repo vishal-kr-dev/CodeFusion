@@ -246,5 +246,60 @@
   .contactForm button:hover {
     background-color: #155eab;
   }
-  
-  
+  /* Existing styles above... */
+/* Existing styles above... */
+
+/* Footer Section */
+.footer {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.footerContent div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerContent h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.footerContent p {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.socialMedia {
+  margin-top: 30px;
+}
+
+.socialMedia h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.socialMedia a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.socialMedia img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s;
+}
+
+.socialMedia img:hover {
+  transform: scale(1.1);
+}
+
+
