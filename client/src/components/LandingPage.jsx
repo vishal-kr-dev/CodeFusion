@@ -1,33 +1,50 @@
-import React from 'react';
-import styles from './LandingPage.module.css';
+import React from "react";
+import styles from "./LandingPage.module.css";
+import { Link } from "react-router-dom";
 
- // Example path (adjust as needed)
+// Example path (adjust as needed)
 
 function LandingPage() {
   return (
     <div>
       <header>
         <nav className={styles.container}>
-          <div className={styles.logo}>
-            <h1>CodeFusion <img src="/logo.png" alt="CodeFusion Logo" height="50px" width="50px" /></h1>
+          <div className="flex items-center justify-start ">
+            <img src="/logo.png" alt="CodeFusion Logo" className="size-24" />
+            <span className="text-4xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">
+              CodeFusion
+            </span>
           </div>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Docs</a></li>
-            <li><a href="#">Contact</a></li>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#features">Features</a>
+            </li>
+            <li>
+              <a href="#">Docs</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
           </ul>
-          <button className={styles.loginBtn}>Login</button>
+          <Link to={"/login"}>
+            <button className={styles.loginBtn}>Login</button>
+          </Link>
         </nav>
       </header>
 
-      <main className={`${styles.hero} ${styles.container}`}>
+      <main
+        className={`${styles.hero} ${styles.container} scroll-smooth`}
+        id="home"
+      >
         <div className={styles.heroContent}>
           <h1>Collaborate, Code, and Conquer.</h1>
           <h2>The ultimate code editor for developers and teams.</h2>
           <p>
-            CodeFusion provides real-time collaboration, syntax highlighting, and a 
-            seamless coding experience. Build better code together.
+            CodeFusion provides real-time collaboration, syntax highlighting,
+            and a seamless coding experience. Build better code together.
           </p>
           <div className={styles.languageLogos}>
             <img src="/public/logos/javascript.png" alt="JavaScript" />
@@ -39,20 +56,31 @@ function LandingPage() {
         </div>
       </main>
 
-      <section className={`${styles.features} ${styles.container}`}>
+      <section
+        id="features"
+        className={`${styles.features} ${styles.container} scroll-smooth`}
+      >
         <h1>Features</h1>
         <div className={styles.featuresList}>
           <div>
             <h2>Real-Time Collaboration</h2>
-            <p>Edit code simultaneously with your team and see updates in real-time.</p>
+            <p>
+              Edit code simultaneously with your team and see updates in
+              real-time.
+            </p>
           </div>
           <div>
             <h2>Syntax Highlighting</h2>
-            <p>Supports multiple programming languages for a smoother coding experience.</p>
+            <p>
+              Supports multiple programming languages for a smoother coding
+              experience.
+            </p>
           </div>
           <div>
             <h2>Customizable Themes</h2>
-            <p>Switch between light and dark themes to suit your preferences.</p>
+            <p>
+              Switch between light and dark themes to suit your preferences.
+            </p>
           </div>
           <div>
             <h2>Session Persistence</h2>
@@ -62,13 +90,21 @@ function LandingPage() {
       </section>
 
       {/* Contact Us Section */}
-      <section className={`${styles.contactUs} ${styles.container}`}>
+      <section
+        id="contact"
+        className={`${styles.contactUs} ${styles.container} scroll-smooth`}
+      >
         <h1>Contact Us</h1>
         <div className={styles.contactInfo}>
           <div>
             <h2>Email</h2>
-            <p>If you have any questions or need assistance, feel free to email us at:</p>
-            <p><a href="mailto:support@codefusion.com">support@codefusion.com</a></p>
+            <p>
+              If you have any questions or need assistance, feel free to email
+              us at:
+            </p>
+            <p>
+              <a href="mailto:support@codefusion.com">support@codefusion.com</a>
+            </p>
           </div>
           <div>
             <h2>Phone</h2>
@@ -89,7 +125,12 @@ function LandingPage() {
             </div>
             <div>
               <label htmlFor="message">Your Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
             </div>
             <button type="submit">Send Message</button>
           </form>
@@ -98,11 +139,13 @@ function LandingPage() {
 
       {/* Footer Section */}
       <section className={`${styles.footer} ${styles.container}`}>
-        
         <div className={styles.footerContent}>
           <div>
             <h2>About Us</h2>
-            <p>Learn more about CodeFusion and how we are revolutionizing collaborative coding.</p>
+            <p>
+              Learn more about CodeFusion and how we are revolutionizing
+              collaborative coding.
+            </p>
           </div>
           <div>
             <h2>Privacy Policy</h2>
@@ -115,13 +158,25 @@ function LandingPage() {
         </div>
         <div className={styles.socialMedia}>
           <h2>Follow Us</h2>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="/logos/facebook.png" alt="Facebook" />
           </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="/logos/twitter.png" alt="Twitter" />
           </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="/logos/linkedin.png" alt="LinkedIn" />
           </a>
         </div>
