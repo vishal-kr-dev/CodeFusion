@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
+import styles from "./Register.module.css";  // Importing the new CSS module
 
 const Register = () => {
   const {
@@ -46,11 +47,9 @@ const Register = () => {
   }, [username]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white-100">
-      <div className="w-full max-w-md bg-white p-8">
-        <h2 className="text-4xl font-extrabold mb-6 text-center">
-          Create your account
-        </h2>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h2 className={styles.heading}>Create your account</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-1">
             <label htmlFor="username" className="sr-only">
@@ -67,14 +66,14 @@ const Register = () => {
                     "Username must be lowercase without spaces and special characters",
                 },
               })}
-              className="w-full px-3 py-2 border border-gray-300 focus:outline-none"
+              className={styles.input}
               placeholder="Username"
             />
             {errors.username && (
-              <p className="text-xs text-red-600">{errors.username.message}</p>
+              <p className={styles.error}>{errors.username.message}</p>
             )}
             {usernameError && (
-              <p className="text-xs text-red-600">{usernameError}</p>
+              <p className={styles.error}>{usernameError}</p>
             )}
           </div>
 
@@ -93,13 +92,13 @@ const Register = () => {
                     message: "Password must be at least 8 characters",
                   },
                 })}
-                className="w-full px-3 py-2 border border-gray-300 focus:outline-none"
+                className={styles.input}
                 placeholder="Password"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                className={styles.toggleButton}
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -109,7 +108,7 @@ const Register = () => {
               </button>
             </div>
             {errors.password && (
-              <p className="text-xs text-red-600">{errors.password.message}</p>
+              <p className={styles.error}>{errors.password.message}</p>
             )}
           </div>
 
@@ -126,13 +125,13 @@ const Register = () => {
                   validate: (value) =>
                     value === password || "Passwords do not match",
                 })}
-                className="w-full px-3 py-2 border border-gray-300 focus:outline-none"
+                className={styles.input}
                 placeholder="Confirm Password"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                className={styles.toggleButton}
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -142,9 +141,7 @@ const Register = () => {
               </button>
             </div>
             {errors.confirmPassword && (
-              <p className="text-xs text-red-600">
-                {errors.confirmPassword.message}
-              </p>
+              <p className={styles.error}>{errors.confirmPassword.message}</p>
             )}
           </div>
 
@@ -152,22 +149,15 @@ const Register = () => {
             <button
               disabled={isSubmitting}
               type="submit"
-              className={`w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium text-white ${
-                isSubmitting
-                  ? "bg-gray-600 hover:bg-gray-700"
-                  : "bg-black hover:bg-gray-800"
-              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
+              className={`${styles.button} ${isSubmitting ? "bg-gray-600" : "bg-black"}`}
             >
               {isSubmitting ? "Loading" : "Submit"}
             </button>
           </div>
         </form>
-        <p className="mt-8 text-center text-sm text-gray-600">
+        <p className={styles.footerText}>
           Already have an account?{" "}
-          <Link
-            to="/login"
-            className="font-medium text-blue-600 hover:text-blue-500"
-          >
+          <Link to="/login" className={styles.link}>
             Sign in
           </Link>
         </p>
