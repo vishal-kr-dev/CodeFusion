@@ -30,7 +30,7 @@ function LandingPage() {
             </li>
           </ul>
           <Link to={"/login"}>
-            <button className={styles.loginBtn}>Login</button>
+            <button className={styles.loginBtn}>Create Room</button>
           </Link>
         </nav>
       </header>
@@ -47,11 +47,11 @@ function LandingPage() {
             and a seamless coding experience. Build better code together.
           </p>
           <div className={styles.languageLogos}>
-            <img src="/public/logos/javascript.png" alt="JavaScript" />
-            <img src="/public/logos/python.png" alt="Python" />
-            <img src="/public/logos/java.png" alt="Java" />
-            <img src="/public/logos/cpp.png" alt="C++" />
-            <img src="/public/logos/html.png" alt="HTML" />
+            <img src="/logos/javascript.png" alt="JavaScript" />
+            <img src="/logos/python.png" alt="Python" />
+            <img src="/logos/java.png" alt="Java" />
+            <img src="/logos/cpp.png" alt="C++" />
+            <img src="/logos/html.png" alt="HTML" />
           </div>
         </div>
       </main>
