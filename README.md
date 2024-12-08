@@ -40,7 +40,7 @@ Are you tired of sending code snippets back and forth, struggling to debug and c
 6. Go to `http://localhost:3000` to view the app
 
 
-**Note:** To stop your server, press `Ctrl+c` or if you used "pm2", then use `pm2 stop server.js` in the terminal.
+**Note:** To stop your server, press `Ctrl+c` in the terminal.
 
 ## Future Scope
 
