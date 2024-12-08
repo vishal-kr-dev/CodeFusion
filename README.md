@@ -17,16 +17,10 @@ Are you tired of sending code snippets back and forth, struggling to debug and c
 
 ### Prerequisites
 
-#### For running via Docker
-
-- Docker (25.0.4)
-- Docker Compose (1.29.2)
-
 #### For running locally
 
 - Node.js (v20.11.1)
 - npm (10.2.4)
-- pm2 (5.3.1) : run `npm i -g pm2` to install pm2 globally
 
 ## Tech Stack
 
@@ -35,27 +29,14 @@ Are you tired of sending code snippets back and forth, struggling to debug and c
 - Express.js
 - Socket.io
 - CodeMirror
-- React-Toastify
-
-### Running via building your own Docker Image
-
-To run the app using docker, follow the steps below:
-
-1. Install [Docker](https://www.docker.com/) on your machine.
-2. Clone the project repository and Navigate to the project directory.
-3. Also you have to change ENV values in the Dockerfile
-4. Replace your username in docker-compose.yml file.
-5. Run the Docker Compose command: `docker-compose up -d`
-6. Go to `http://localhost:3000` to view the app
-
 
 ### Running Locally
 
 1. Clone this repository and cd into it
 2. Run `npm install` to install the dependencies
 3. Create .env file in the root folder and copy paste the content of example.env, and add necessary credentials.
-4. To start the react app client run `npm start` in one terminal
-5. To start the server run `npm server:dev` or `pm2 start server.js` in another terminal
+4. To start the react app client run `npm run dev` in one terminal
+5. To start the server run `npm start`
 6. Go to `http://localhost:3000` to view the app
 
 
