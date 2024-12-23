@@ -12,6 +12,7 @@ import {
   Navigate,
   useParams,
 } from "react-router-dom";
+import { languageOptions } from "../constants/languageOptions";
 
 const EditorPage = () => {
   const [lang, setLang] = useRecoilState(language);
@@ -102,12 +103,25 @@ const EditorPage = () => {
     return <Navigate to="/" />;
   }
 
+  const handleChange = (e) => {
+    const selectedLang = e.target.value;
+    const selectedLangId = languageOptions.find(
+      (l) => l.value === selectedLang
+    )?.id;
+
+    if (selectedLangId) {
+      setLang({ id: selectedLangId, value: selectedLang });
+      window.location.reload();
+    }
+    console.log(lang)
+  };
+
   return (
     <div className="mainWrap">
       <div className="aside">
         <div className="asideInner">
           <div className="logo">
-            <img className="logoImage" src="/logo.png" alt="logo"/>
+            <img className="logoImage" src="/logo.png" alt="logo" />
           </div>
           <h3>Connected</h3>
           <div className="clientsList">
@@ -120,14 +134,14 @@ const EditorPage = () => {
         <label>
           Select Language:
           <select
-            value={lang}
-            onChange={(e) => {
-              setLang(e.target.value);
-              window.location.reload();
-            }}
+            value={lang.value}
+            onChange={handleChange}
             className="seLang text-black"
           >
-            <option value="clike">C / C++ / C# / Java</option>
+            {languageOptions.map((l,id) => (
+              <option key={id} value={l.value}>{l.label}</option>
+              ))}
+            {/* <option value="clike">C / C++ / C# / Java</option>
             <option value="css">CSS</option>
             <option value="dart">Dart</option>
             <option value="django">Django</option>
@@ -147,7 +161,7 @@ const EditorPage = () => {
             <option value="sql">SQL</option>
             <option value="swift">Swift</option>
             <option value="xml">XML</option>
-            <option value="yaml">yaml</option>
+            <option value="yaml">yaml</option> */}
           </select>
         </label>
 

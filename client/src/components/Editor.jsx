@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { language, cmtheme } from "../atoms";
 import { useRecoilValue } from "recoil";
 import ACTIONS from "../actions/Actions";
+import OutputWindow from "./OutputWindow"
+import axios from "axios"
 
 // CODE MIRROR
 import Codemirror from "codemirror";
@@ -111,6 +113,9 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
   const editorRef = useRef(null);
   const lang = useRecoilValue(language);
   const editorTheme = useRecoilValue(cmtheme);
+  const [data, setData] = useState();
+  const [processing, setProcessing] = useState(null);
+  const [outputDetails, setOutputDetails] = useState(null);
 
   useEffect(() => {
     async function init() {
@@ -129,6 +134,7 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
         const { origin } = changes;
         const code = instance.getValue();
         onCodeChange(code);
+        setData(code);
         if (origin !== "setValue") {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,
@@ -156,7 +162,58 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
     };
   }, [socketRef.current]);
 
-  return <textarea id="realtimeEditor"></textarea>;
+  const handleCompile = async () => {
+    console.log(data, lang, lang.id);
+    setProcessing(true);
+    const formData = {
+      language_id: lang.id,
+      source_code: btoa(data),
+    };
+
+    const options = {
+      method: "POST",
+      url: import.meta.env.VITE_RAPID_API_URL,
+      params: { base64_encoded: "true", fields: "*", wait: "true" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-RapidAPI-Host": import.meta.env.VITE_RAPID_API_HOST,
+        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+      },
+      data: formData,
+    };
+
+    try {
+      const response = await axios.request(options);
+      console.log("Execution Result", response.data);
+
+      setOutputDetails(response.data);
+    } catch (err) {
+      let error = err.response ? err.response.data : err;
+      let status = err.response?.status;
+      console.log("Error:", error);
+      if (status === 429) {
+        console.log("Too many requests");
+      }
+    } finally {
+      setProcessing(false);
+    }
+  };
+
+  return (
+    <div className="h-full w-full" >
+      <textarea id="realtimeEditor"/>
+      <button
+        onClick={handleCompile}
+        disabled={processing || !data}
+        className={`bg-green-500 text-white fixed top-5 right-5 px-2 py-1 rounded ${
+          processing || !data ? "cursor-not-allowed opacity-50" : ""
+        }`}
+      >
+        {processing ? "Processing..." : "Compile"}
+      </button>
+      <OutputWindow outputDetails={outputDetails} />
+    </div>
+  );
 };
 
 export default Editor;
