@@ -19,7 +19,7 @@ body {
 
 /* Container */
 .container {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -133,7 +133,7 @@ nav ul li a:hover {
 /* Features Section */
 .features {
   background-color: var(--background-light); /* Darker background for features */
-  padding: 60px 20px;
+  padding: 100px 20px;
 }
 
 .features h1 {
@@ -147,7 +147,7 @@ nav ul li a:hover {
 .featuresList {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two features in one line */
-  gap: 20px;
+  gap: 60px;
 }
 
 .featuresList div {
@@ -171,92 +171,94 @@ nav ul li a:hover {
 }
 
 /* Contact Us Section */
+/* Contact Us Section */
+/* Contact Us Section */
 .contactUs {
   padding: 60px 20px;
   background-color: var(--background-light); /* Darker background */
   margin-bottom: 60px; /* Added margin to separate from footer */
-}
-
-.contactUs h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.contactInfo {
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 40px;
+  flex-direction: column; /* Stack the h1 and form vertically */
+  align-items: center; /* Center horizontally */
+  gap: 40px; /* Space between h1 and form */
+  min-height: 400px; /* Set a min-height for the section */
 }
 
-.contactInfo div {
-  flex: 1;
+/* Form Container */
+.contactForm {
+  max-width: 600px; /* Max width for form */
+  width: 100%; /* Ensure full width for the form container */
+  background-color: var(--background-dark); /* Dark background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between form elements */
+  justify-content: center; /* Vertically center the form elements inside the container */
+  text-align: center; /* Center the text inside the form */
 }
 
-.contactInfo h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-color-light); /* Light text */
-  margin-bottom: 10px;
-}
-
-.contactInfo p {
-  font-size: 16px;
-  color: var(--secondary-color); /* Lighter gray text */
-}
-
-.contactInfo a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-.contactInfo a:hover {
-  text-decoration: underline;
-}
-
+/* Form Header */
 .contactForm h2 {
   font-size: 20px;
   font-weight: 600;
-  color: var(--text-color-light); /* Light text */
+  color: var(--text-color-light);
   margin-bottom: 20px;
 }
 
-.contactForm form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
+/* Form Input Labels */
 .contactForm label {
   font-size: 16px;
-  color: var(--secondary-color); /* Lighter gray text */
+  color: var(--secondary-color);
+  text-align: left;
+  margin-bottom: 8px;
 }
 
+/* Form Inputs */
 .contactForm input,
 .contactForm textarea {
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 16px; /* Spacing below each input field */
+  width: 100%; /* Make inputs take full width */
+  box-sizing: border-box;
 }
 
+/* Form Textarea */
+.contactForm textarea {
+  height: 120px; /* Adjust the height for the message input */
+  resize: vertical; /* Allow user to resize textarea vertically */
+}
+
+/* Form Button */
 .contactForm button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   background-color: var(--primary-color);
   color: var(--text-color-light);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 16px;
+  margin-top: 20px; /* Space the button away from form fields */
 }
 
 .contactForm button:hover {
   background-color: #155eab;
 }
+
+/* Contact Us Header */
+.contactUs h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 0; /* Remove extra space below the header */
+}
+
 
 /* Footer Section */
 .footer {
