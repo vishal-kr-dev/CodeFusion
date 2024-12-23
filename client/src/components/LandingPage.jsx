@@ -10,7 +10,7 @@ function LandingPage() {
       <header>
         <nav className={styles.container}>
           <div className="flex items-center justify-start ">
-            <img src="/logo.png" alt="CodeFusion Logo" className="size-24" />
+            <img src="/logo.png" alt="CodeFusion Logo" className="size-8" />
             <span className="text-4xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">
               CodeFusion
             </span>

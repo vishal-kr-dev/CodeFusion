@@ -30,7 +30,7 @@ const Login = () => {
       );
 
       if (response.status === 200) {
-        navigate(`/room/${data.username}`);
+        navigate(`/dashboard/${data.username}`);
       }
     } catch (error) {
       console.log("Error while sending data", error);
