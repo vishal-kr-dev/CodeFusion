@@ -57,37 +57,41 @@ function LandingPage() {
       </main>
 
       <section
-        id="features"
-        className={`${styles.features} ${styles.container} scroll-smooth`}
-      >
-        <h1>Features</h1>
-        <div className={styles.featuresList}>
-          <div>
-            <h2>Real-Time Collaboration</h2>
-            <p>
-              Edit code simultaneously with your team and see updates in
-              real-time.
-            </p>
-          </div>
-          <div>
-            <h2>Syntax Highlighting</h2>
-            <p>
-              Supports multiple programming languages for a smoother coding
-              experience.
-            </p>
-          </div>
-          <div>
-            <h2>Customizable Themes</h2>
-            <p>
-              Switch between light and dark themes to suit your preferences.
-            </p>
-          </div>
-          <div>
-            <h2>Session Persistence</h2>
-            <p>Rejoin your coding sessions anytime without losing progress.</p>
-          </div>
-        </div>
-      </section>
+  id="features"
+  className={`${styles.features} ${styles.container} scroll-smooth`}
+>
+  <h1>Features</h1>
+  <div className={styles.featuresList}>
+    <div>
+      <h2>Real-Time Collaboration</h2>
+      <p>
+        Edit code simultaneously with your team and see updates in real-time. This feature makes collaboration seamless by allowing all team members to work on the same codebase without any latency issues.
+      </p>
+    
+    </div>
+    <div>
+      <h2>Syntax Highlighting</h2>
+      <p>
+        Supports multiple programming languages for a smoother coding experience. Whether you’re working with JavaScript, Python, or any other major programming language, our platform ensures your code is highlighted for better readability.
+      </p>
+    
+    </div>
+    <div>
+      <h2>Customizable Themes</h2>
+      <p>
+        Switch between light and dark themes to suit your preferences. You can toggle the theme depending on the time of day or your mood to enhance comfort while coding.
+      </p>
+   
+    </div>
+    <div>
+      <h2>Session Persistence</h2>
+      <p>
+        Rejoin your coding sessions anytime without losing progress. Our platform automatically saves your work, ensuring you can continue from where you left off, even if you disconnect.
+      </p>
+     
+    </div>
+  </div>
+</section>
 
       {/* Contact Us Section */}
       <section
