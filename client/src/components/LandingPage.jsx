@@ -57,85 +57,67 @@ function LandingPage() {
       </main>
 
       <section
-        id="features"
-        className={`${styles.features} ${styles.container} scroll-smooth`}
-      >
-        <h1>Features</h1>
-        <div className={styles.featuresList}>
-          <div>
-            <h2>Real-Time Collaboration</h2>
-            <p>
-              Edit code simultaneously with your team and see updates in
-              real-time.
-            </p>
-          </div>
-          <div>
-            <h2>Syntax Highlighting</h2>
-            <p>
-              Supports multiple programming languages for a smoother coding
-              experience.
-            </p>
-          </div>
-          <div>
-            <h2>Customizable Themes</h2>
-            <p>
-              Switch between light and dark themes to suit your preferences.
-            </p>
-          </div>
-          <div>
-            <h2>Session Persistence</h2>
-            <p>Rejoin your coding sessions anytime without losing progress.</p>
-          </div>
-        </div>
-      </section>
+  id="features"
+  className={`${styles.features} ${styles.container} scroll-smooth`}
+>
+  <h1>Features</h1>
+  <div className={styles.featuresList}>
+    <div>
+      <h2>Real-Time Collaboration</h2>
+      <p>
+        Edit code simultaneously with your team and see updates in real-time. This feature makes collaboration seamless by allowing all team members to work on the same codebase without any latency issues.
+      </p>
+    
+    </div>
+    <div>
+      <h2>Syntax Highlighting</h2>
+      <p>
+        Supports multiple programming languages for a smoother coding experience. Whether you’re working with JavaScript, Python, or any other major programming language, our platform ensures your code is highlighted for better readability.
+      </p>
+    
+    </div>
+    <div>
+      <h2>Customizable Themes</h2>
+      <p>
+        Switch between light and dark themes to suit your preferences. You can toggle the theme depending on the time of day or your mood to enhance comfort while coding.
+      </p>
+   
+    </div>
+    <div>
+      <h2>Session Persistence</h2>
+      <p>
+        Rejoin your coding sessions anytime without losing progress. Our platform automatically saves your work, ensuring you can continue from where you left off, even if you disconnect.
+      </p>
+     
+    </div>
+  </div>
+</section>
 
       {/* Contact Us Section */}
-      <section
-        id="contact"
-        className={`${styles.contactUs} ${styles.container} scroll-smooth`}
-      >
-        <h1>Contact Us</h1>
-        <div className={styles.contactInfo}>
-          <div>
-            <h2>Email</h2>
-            <p>
-              If you have any questions or need assistance, feel free to email
-              us at:
-            </p>
-            <p>
-              <a href="mailto:support@codefusion.com">support@codefusion.com</a>
-            </p>
-          </div>
-          <div>
-            <h2>Phone</h2>
-            <p>We're available Monday to Friday, 9 AM - 5 PM:</p>
-            <p>(123) 456-7890</p>
-          </div>
-        </div>
-        <div className={styles.contactForm}>
-          <h2>Send Us a Message</h2>
-          <form>
-            <div>
-              <label htmlFor="name">Your Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div>
-              <label htmlFor="email">Your Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div>
-              <label htmlFor="message">Your Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                required
-              ></textarea>
-            </div>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
+      <section id="contact" className={`${styles.contactUs} ${styles.container} scroll-smooth`}>
+  <h1>Contact Us</h1>
+  <div className={styles.contactForm}>
+    <h2>Send Us a Message</h2>
+    <form>
+      <div>
+        <label htmlFor="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+      </div>
+      <div>
+        <label htmlFor="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+      <div>
+        <label htmlFor="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Type your message here." rows="4" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+
 
       {/* Footer Section */}
       <section className={`${styles.footer} ${styles.container}`}>
