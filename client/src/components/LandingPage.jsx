@@ -69,13 +69,20 @@ function LandingPage() {
       </p>
     
     </div>
-    <div>
+    {/* <div>
       <h2>Syntax Highlighting</h2>
       <p>
         Supports multiple programming languages for a smoother coding experience. Whether you’re working with JavaScript, Python, or any other major programming language, our platform ensures your code is highlighted for better readability.
       </p>
     
+    </div> */}
+        <div>
+      <h2>Code Compilation and Error Detection</h2>
+      <p>
+        Compile your code directly on the platform and get detailed error messages to identify and fix issues faster. Our real-time compiler ensures you can test and debug your code seamlessly without needing external tools.
+      </p>
     </div>
+
     <div>
       <h2>Customizable Themes</h2>
       <p>
@@ -83,12 +90,18 @@ function LandingPage() {
       </p>
    
     </div>
-    <div>
+    {/* <div>
       <h2>Session Persistence</h2>
       <p>
         Rejoin your coding sessions anytime without losing progress. Our platform automatically saves your work, ensuring you can continue from where you left off, even if you disconnect.
       </p>
      
+    </div> */}
+    <div>
+      <h2>Peer-to-Peer Learning</h2>
+      <p>
+        Connect with other developers and learn together through shared sessions. Whether you’re mentoring or being mentored, this feature fosters collaboration and knowledge sharing among peers.
+      </p>
     </div>
   </div>
 </section>

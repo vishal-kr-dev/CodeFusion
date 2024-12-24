@@ -9,7 +9,7 @@ function Dashboard() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const record = [
+  const rooms = [
     // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
     // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
     // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
@@ -36,10 +36,7 @@ function Dashboard() {
         <p className="text-2xl">{username}</p>
       </nav>
 
-      <p className="text-white mx-24 m-8 text-7xl">
-        Welcome back <span className="text-blue-600">{username}</span>, happy
-        coding...
-      </p>
+      <p className="text-white mx-24 m-8 text-7xl">Welcome back <span className="text-blue-600">{username}</span>, Happy coding &lt;/&gt;</p>
 
       <div className="mx-24 my-10">
         <button
@@ -49,24 +46,25 @@ function Dashboard() {
           Create / Join
         </button>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
-          {record.map((r, index) => (
-            <button
-              key={index}
-              className="bg-gray-700 p-4 border border-gray-600 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-600 active:bg-gray-500 focus:outline-none transition-all duration-300"
-            >
-              {/* Name Section */}
-              <div className="mb-4 flex gap-2 text-left">
-                <p className="font-semibold text-gray-200">Name :</p>
-                <p className="text-white">{r.name}</p>
-              </div>
-
-              {/* RoomID Section */}
-              <div className="text-left">
-                <p className="font-semibold text-gray-200">RoomID :</p>
-                <p className="text-white">{r.id}</p>
-              </div>
-            </button>
-          ))}
+        {rooms.length > 0 ? (
+            rooms.map((room, index) => (
+              <button
+                key={index}
+                className="bg-gray-700 p-4 border border-gray-600 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-600 active:bg-gray-500 focus:outline-none transition-all duration-300"
+              >
+                <div className="mb-4 flex gap-2 text-left">
+                  <p className="font-semibold text-gray-200">Name :</p>
+                  <p className="text-white">{room.name}</p>
+                </div>
+                <div className="text-left">
+                  <p className="font-semibold text-gray-200">RoomID :</p>
+                  <p className="text-white">{room.id}</p>
+                </div>
+              </button>
+            ))
+          ) : (
+            <p className="text-gray-400 text-lg">No rooms available. Create one to get started!</p>
+          )}
         </div>
 
         {isModalOpen && (
