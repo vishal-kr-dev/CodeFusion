@@ -23,7 +23,7 @@ function LandingPage() {
               <a href="#features">Features</a>
             </li>
             <li>
-              <a href="#">Docs</a>
+              <a href="/guide">Guide</a>
             </li>
             <li>
               <a href="#contact">Contact</a>
