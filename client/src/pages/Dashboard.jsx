@@ -22,7 +22,7 @@ function Dashboard() {
         <p className="text-lg">{username}</p>
       </nav>
 
-      <p className="text-white mx-24 m-8 text-7xl">Welcome back {username}, happy coding...</p>
+      <p className="text-white mx-24 m-8 text-7xl">Welcome back <span className="text-blue-600">{username}</span>, happy coding...</p>
 
       <div className="mx-24 my-10">
         <button

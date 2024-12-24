@@ -113,15 +113,27 @@ const EditorPage = () => {
       setLang({ id: selectedLangId, value: selectedLang });
       window.location.reload();
     }
-    console.log(lang)
+    console.log(lang);
   };
+
+  const str = "CodeFusion";
+  const alphabetArray = str.split("");
 
   return (
     <div className="mainWrap">
       <div className="aside">
         <div className="asideInner">
-          <div className="logo">
-            <img className="logoImage" src="/logo.png" alt="logo" />
+          <div className="flex items-center justify-center cursor-pointer pb-2">
+            <img
+              src="/logo.png"
+              alt="CodeFusion Logo"
+              className="size-8 hover:scale-125"
+            />
+            {alphabetArray.map((char, index) => (
+              <span className="text-3xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125">
+                {char}
+              </span>
+            ))}
           </div>
           <h3>Connected</h3>
           <div className="clientsList">
@@ -138,9 +150,11 @@ const EditorPage = () => {
             onChange={handleChange}
             className="seLang text-black"
           >
-            {languageOptions.map((l,id) => (
-              <option key={id} value={l.value}>{l.label}</option>
-              ))}
+            {languageOptions.map((l, id) => (
+              <option key={id} value={l.value}>
+                {l.label}
+              </option>
+            ))}
             {/* <option value="clike">C / C++ / C# / Java</option>
             <option value="css">CSS</option>
             <option value="dart">Dart</option>
