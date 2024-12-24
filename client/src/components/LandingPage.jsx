@@ -30,7 +30,7 @@ function LandingPage() {
             </li>
           </ul>
           <Link to={"/login"}>
-            <button className={styles.loginBtn}>Login/Register</button>
+            <button className={styles.loginBtn}>Login / Register</button>
           </Link>
         </nav>
       </header>

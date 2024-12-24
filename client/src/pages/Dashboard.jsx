@@ -10,19 +10,36 @@ function Dashboard() {
   const closeModal = () => setIsModalOpen(false);
 
   const record = [
-    { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
-    { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
-    { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
+    // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
+    // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
+    // { name: "xyx", id: "b7e0a702-ae08-414b-935f-3cd3285d16ab" },
   ];
+
+  const str = "CodeFusion";
+  const alphabetArray = str.split("");
 
   return (
     <main className="min-h-screen bg-gray-900">
-      <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <p className="text-xl font-semibold">Dashboard</p>
-        <p className="text-lg">{username}</p>
+      <nav className="bg-[#121212] text-white p-4 flex justify-between items-center">
+        <div className="flex items-center justify-center cursor-pointer pb-2">
+          <img
+            src="/logo.png"
+            alt="CodeFusion Logo"
+            className="size-8 hover:scale-125"
+          />
+          {alphabetArray.map((char, index) => (
+            <span className="text-4xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125">
+              {char}
+            </span>
+          ))}
+        </div>
+        <p className="text-2xl">{username}</p>
       </nav>
 
-      <p className="text-white mx-24 m-8 text-7xl">Welcome back <span className="text-blue-600">{username}</span>, happy coding...</p>
+      <p className="text-white mx-24 m-8 text-7xl">
+        Welcome back <span className="text-blue-600">{username}</span>, happy
+        coding...
+      </p>
 
       <div className="mx-24 my-10">
         <button
