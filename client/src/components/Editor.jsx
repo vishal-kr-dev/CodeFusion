@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { language, cmtheme } from "../atoms";
-import { useRecoilValue } from "recoil";
+import { language, cmtheme, data } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
 import ACTIONS from "../actions/Actions";
 import OutputWindow from "./OutputWindow"
 import axios from "axios"
@@ -113,7 +113,7 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
   const editorRef = useRef(null);
   const lang = useRecoilValue(language);
   const editorTheme = useRecoilValue(cmtheme);
-  const [data, setData] = useState();
+  const [codeData, setCodeData] = useRecoilState(data);
   const [processing, setProcessing] = useState(null);
   const [outputDetails, setOutputDetails] = useState(null);
 
@@ -134,7 +134,7 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
         const { origin } = changes;
         const code = instance.getValue();
         onCodeChange(code);
-        setData(code);
+        setCodeData(code);
         if (origin !== "setValue") {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
             roomId,
