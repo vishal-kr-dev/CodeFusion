@@ -4,6 +4,6 @@ import { fetchRecord, saveRecord } from "../controllers/recordController.js";
 const router = express.Router();
 
 router.post("/save", saveRecord);
-router.post("/fetch", fetchRecord);
+router.get("/fetch", fetchRecord);
 
 export default router;

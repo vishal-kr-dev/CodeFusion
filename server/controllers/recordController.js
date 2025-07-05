@@ -1,8 +1,9 @@
 import UserModel from "../models/UserSchema.js";
 
 const saveRecord = async (req, res) => {
+  const { username, roomId, data } = req.body;
+
   try {
-    const { username, roomId, data } = req.body;
 
     const user = await UserModel.findOne({ username });
 

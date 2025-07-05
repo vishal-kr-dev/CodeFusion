@@ -28,7 +28,7 @@ function Dashboard() {
             className="size-8 hover:scale-125"
           />
           {alphabetArray.map((char, index) => (
-            <span className="text-4xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125">
+            <span className="text-4xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125" key={index}>
               {char}
             </span>
           ))}

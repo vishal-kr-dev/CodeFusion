@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import toast from "react-hot-toast";
 import Client from "../components/Client";
 import Editor from "../components/Editor";
-import { language, cmtheme } from "../atoms";
-import { useRecoilState } from "recoil";
+import { language, cmtheme, username, data } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
 import ACTIONS from "../actions/Actions";
 import { initSocket } from "../socket";
 import {
@@ -13,10 +13,14 @@ import {
   useParams,
 } from "react-router-dom";
 import { languageOptions } from "../constants/languageOptions";
+import axios from "axios";
 
 const EditorPage = () => {
   const [lang, setLang] = useRecoilState(language);
   const [them, setThem] = useRecoilState(cmtheme);
+
+  const codeData = useRecoilValue(data)
+  const user = useRecoilValue(username)
 
   const [clients, setClients] = useState([]);
 
@@ -116,6 +120,26 @@ const EditorPage = () => {
     console.log(lang);
   };
 
+  const saveCode = async () => {
+    const formData = {
+      username: location.state?.username,
+      roomId,
+      data: codeData,
+    };
+    console.log(username, roomId, data)
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/record/save",
+        formData
+      );
+      if(response.status === 200){
+        toast.success("Saved")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   const str = "CodeFusion";
   const alphabetArray = str.split("");
 
@@ -130,7 +154,7 @@ const EditorPage = () => {
               className="size-8 hover:scale-125"
             />
             {alphabetArray.map((char, index) => (
-              <span className="text-3xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125">
+              <span className="text-3xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold hover:scale-125" key={index}>
                 {char}
               </span>
             ))}
@@ -256,6 +280,10 @@ const EditorPage = () => {
             <option value="zenburn">zenburn</option>
           </select>
         </label>
+
+        <button className="btn bg-green-500 mb-4 hover:text-black" onClick={saveCode}>
+          Save
+        </button>
 
         <button className="btn copyBtn" onClick={copyRoomId}>
           Copy ROOM ID
