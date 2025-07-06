@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import { languageOptions } from "../constants/languageOptions";
 import axios from "axios";
+import axiosInstance from "../lib/axiosInstance";
 
 const EditorPage = () => {
   const [lang, setLang] = useRecoilState(language);
@@ -128,10 +129,8 @@ const EditorPage = () => {
     };
     console.log(username, roomId, data)
     try {
-      const response = await axios.post(
-        "http://localhost:5000/record/save",
-        formData
-      );
+      const response = await axiosInstance.post('/record/save', formData)
+
       if(response.status === 200){
         toast.success("Saved")
       }

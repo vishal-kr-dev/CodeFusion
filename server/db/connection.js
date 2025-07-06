@@ -3,10 +3,11 @@ import mongoose from 'mongoose'
 const Connect = async ()=> {
     try {
         await mongoose
-          .connect("mongodb://localhost:27017/CodeFusion")
-          .then(console.log("Connected with Mongodb"));
+            .connect(`${process.env.MONGO_URI}`)
+            .then(console.log("Connected with Mongodb"));
     } catch (error) {
-        console.log(error)        
+        console.log("MongoDB connection error: ", error);
+        process.exit(1);       
     }
 }
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
-import axios from "axios";
 import styles from "./Register.module.css";  // Importing the new CSS module
+import axiosInstance from "../lib/axiosInstance";
 
 const Register = () => {
   const {
@@ -24,10 +24,7 @@ const Register = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
-      const response = await axios.post(
-        `http://localhost:5000/user/register`,
-        data
-      );
+      const response = await axiosInstance.post("/user/register", data)
 
       if (response.status === 201) {
         navigate("/login");

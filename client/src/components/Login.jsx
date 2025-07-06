@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import axios from "axios";
 import styles from "./Login.module.css";
+import axiosInstance from "../lib/axiosInstance";
 
 const Login = () => {
   const {
@@ -24,10 +24,7 @@ const Login = () => {
     console.log(data);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/login",
-        data
-      );
+      const response = await axiosInstance.post("/user/login", data)
 
       if (response.status === 200) {
         navigate(`/dashboard/${data.username}`);
