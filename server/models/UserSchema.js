@@ -5,11 +5,11 @@ const recordSchema = new mongoose.Schema({
   data: { type: String, required: true },
 });
 
-const UserSchema = mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  roomId: {type: String, unique: true},
-  records: [recordSchema]
+  roomId: { type: String, unique: true, sparse: true },  // ✅ FIXED
+  records: [recordSchema],
 });
 
 const UserModel = mongoose.model("User", UserSchema);

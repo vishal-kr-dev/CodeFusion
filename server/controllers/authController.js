@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import UserModel from "../models/UserSchema.js";
 
 const register = async (req, res) => {
@@ -6,12 +7,15 @@ const register = async (req, res) => {
 
     const userExist = await UserModel.findOne({ username });
     if (userExist) {
-      return res.status(400).json({ msg: "User already exists" });
+      return res.status(409).json({ msg: "Username already exists" });
     }
 
-    const newUser = new UserModel({ username, password });
+    // Hash password securely
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new UserModel({ username, password: hashedPassword });
     await newUser.save();
-    
+
     return res.status(201).json({ msg: "User registered successfully" });
   } catch (error) {
     console.error("Error while registering:", error);
@@ -22,10 +26,14 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(`Id: ${username} password: ${password}`);
 
     const user = await UserModel.findOne({ username });
-    if (!user || password !== user.password) {
+    if (!user) {
+      return res.status(401).json({ msg: "Username or password incorrect" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
       return res.status(401).json({ msg: "Username or password incorrect" });
     }
 

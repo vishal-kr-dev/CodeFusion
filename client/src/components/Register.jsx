@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
-import styles from "./Register.module.css";  // Importing the new CSS module
+import styles from "./Register.module.css";
 
 const Register = () => {
   const {
@@ -22,20 +22,32 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const response = await axios.post(
-        `http://localhost:5000/user/register`,
+        "http://localhost:5000/user/register",
         data
       );
 
-      if (response.status === 201) {
+      if (response.status === 201 || response.status === 200) {
         navigate("/login");
+      } else {
+        setUsernameError("Unexpected response from server.");
       }
     } catch (error) {
-      console.log("Error while sending data", error);
-      if (error.response && error.response.status === 409) {
-        setUsernameError("Username already exists");
+      console.error("Error during registration:", error);
+
+      if (error.response) {
+        if (error.response.status === 409) {
+          setUsernameError("Username already exists");
+        } else if (error.response.data?.msg) {
+          setUsernameError(error.response.data.msg);
+        } else {
+          setUsernameError("Something went wrong on the server");
+        }
+      } else if (error.request) {
+        setUsernameError("No response from server. Check your network.");
+      } else {
+        setUsernameError("Error: " + error.message);
       }
     }
   };
@@ -51,10 +63,7 @@ const Register = () => {
       <div className={styles.card}>
         <h2 className={styles.heading}>Create your account</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-1">
-            <label htmlFor="username" className="sr-only">
-              Username
-            </label>
+          <div>
             <input
               id="username"
               type="text"
@@ -63,7 +72,7 @@ const Register = () => {
                 validate: {
                   lowercase: (value) =>
                     /^[a-z0-9]+$/.test(value) ||
-                    "Username must be lowercase without spaces and special characters",
+                    "Use lowercase letters and numbers only",
                 },
               })}
               className={styles.input}
@@ -77,11 +86,8 @@ const Register = () => {
             )}
           </div>
 
-          <div className="space-y-1">
-            <div className="relative">
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
+          <div>
+            <div className={styles.passwordContainer}>
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -89,7 +95,7 @@ const Register = () => {
                   required: "Password is required",
                   minLength: {
                     value: 8,
-                    message: "Password must be at least 8 characters",
+                    message: "Minimum 8 characters required",
                   },
                 })}
                 className={styles.input}
@@ -100,11 +106,7 @@ const Register = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className={styles.toggleButton}
               >
-                {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
-                ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
-                )}
+                {showPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
             {errors.password && (
@@ -112,16 +114,13 @@ const Register = () => {
             )}
           </div>
 
-          <div className="space-y-1">
-            <div className="relative">
-              <label htmlFor="confirmPassword" className="sr-only">
-                Confirm Password
-              </label>
+          <div>
+            <div className={styles.passwordContainer}>
               <input
                 id="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
                 {...register("confirmPassword", {
-                  required: "Confirm Password is required",
+                  required: "Please confirm your password",
                   validate: (value) =>
                     value === password || "Passwords do not match",
                 })}
@@ -130,14 +129,12 @@ const Register = () => {
               />
               <button
                 type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                onClick={() =>
+                  setShowConfirmPassword(!showConfirmPassword)
+                }
                 className={styles.toggleButton}
               >
-                {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
-                ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
-                )}
+                {showConfirmPassword ? <EyeOff /> : <Eye />}
               </button>
             </div>
             {errors.confirmPassword && (
@@ -145,16 +142,15 @@ const Register = () => {
             )}
           </div>
 
-          <div>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              className={`${styles.button} ${isSubmitting ? "bg-gray-600" : "bg-black"}`}
-            >
-              {isSubmitting ? "Loading" : "Submit"}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={styles.button}
+          >
+            {isSubmitting ? "Registering..." : "Register"}
+          </button>
         </form>
+
         <p className={styles.footerText}>
           Already have an account?{" "}
           <Link to="/login" className={styles.link}>
